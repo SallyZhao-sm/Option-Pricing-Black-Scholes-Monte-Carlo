@@ -1,36 +1,31 @@
-# MIE1622HW4---Asset-Pricing-with-Black-Scholes-and-Monte-Carlo-Simulation
+# Option Pricing with Black–Scholes and Monte Carlo Simulation
 
-This project implements and compares analytical and simulation-based methods for pricing European and Barrier options. The work combines the Black-Scholes model with one-step and multi-step Monte Carlo methods to evaluate accuracy, efficiency, and sensitivity to volatility.
+## Overview
 
-## Methods
-- **Black-Scholes Formula**: Closed-form pricing of European call and put options  
-- **Monte Carlo (European)**:  
-  - One-step MC simulates terminal asset prices directly  
-  - Multi-step MC simulates full asset price paths, more suitable for path-dependent options  
-- **Monte Carlo (Barrier Knock-In Option)**:  
-  - Up-and-in barrier at $110  
-  - Option activates only if barrier is crossed before expiration  
+This project implements analytical and simulation-based methods for pricing European and barrier options. It compares the Black–Scholes formula with one-step and multi-step Monte Carlo simulation to evaluate pricing accuracy, computational efficiency, convergence, and path dependence.
 
-## Results
-- **European Options**:  
-  - Black-Scholes and one-step MC produced nearly identical results, confirming accuracy  
-  - Multi-step MC less efficient for European options but valuable for path-dependent ones  
-- **Barrier Options**:  
-  - Prices were lower than European options since payoff depends on barrier activation  
-  - Example: one-step MC Barrier put priced at 0.0 vs. European put at ~7.89  
-- **Volatility Sensitivity**:  
-  - Higher volatility increased both call and put values due to greater chance of barrier activation  
-  - Lower volatility decreased values as activation became less likely  
+## Instruments
 
-## Key Insights
-- One-step MC is best for European options; multi-step MC needed for Barrier options  
-- Barrier options always have lower payoffs than standard European options  
-- Monte Carlo results converge to Black-Scholes values when steps = 1 and sufficient paths are used  
-- Approx. 30,000 paths (call) and 700,000 paths (put) were required for MC to match Black-Scholes within cents  
+- European call and put options
+- Up-and-in barrier options with a barrier level of $110
 
-## Skills Demonstrated
-- Option pricing under Black-Scholes and Monte Carlo frameworks  
-- Handling path-dependent derivatives (Barrier options)  
-- Sensitivity analysis with respect to volatility  
-- Python implementation of stochastic simulations (NumPy, SciPy)  
-- Critical evaluation of model efficiency and accuracy  
+## Methodology
+
+- Calculated European option values using the Black–Scholes closed-form formula
+- Simulated terminal asset prices with one-step Monte Carlo
+- Simulated complete price paths with multi-step Monte Carlo
+- Checked whether simulated paths crossed the barrier before expiration
+- Tested price sensitivity to volatility
+- Measured Monte Carlo convergence toward Black–Scholes values
+
+## Key Results
+
+- One-step Monte Carlo converged closely to Black–Scholes prices for European options.
+- Approximately 30,000 call paths and 700,000 put paths were required to match the analytical values within cents in the tested setup.
+- Multi-step simulation was less efficient for vanilla European options but necessary for path-dependent barrier options.
+- Barrier option values remained below the corresponding vanilla option values because payoff requires barrier activation.
+- Higher volatility increased the probability of crossing the barrier and raised the option values in the tested scenarios.
+
+## Technologies
+
+Python, NumPy, SciPy, Monte Carlo simulation, Black–Scholes modeling, stochastic processes, sensitivity analysis
